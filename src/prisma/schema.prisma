@@ -1,48 +1,48 @@
 datasource db {
-    url = env("DATABASE_URL")
-    provider = "postgresql"
+  url      = env("DATABASE_URL")
+  provider = "postgresql"
 }
 
 generator client {
-    provider = "prisma-client-js"
-    output = "client"
+  provider = "prisma-client-js"
 }
 
 model Book {
-    id      Int     @id @default(autoincrement())
-    original_title String
-    slug String @unique
-    chapters Chapter[]
+  id             Int       @id @default(autoincrement())
+  original_title String
+  slug           String    @unique
+  chapters       Chapter[]
 }
 
 model Chapter {
-    id Int @id @default(autoincrement())
-    order_number Int
-    book_id Int
-    book Book @relation(fields: [book_id],references: [id])
-    verses Verse[]
+  id           Int     @id @default(autoincrement())
+  order_number Int
+  book_id      Int
+  book         Book    @relation(fields: [book_id], references: [id])
+  verses       Verse[]
 }
 
 model Verse {
-    id Int @id @default(autoincrement())
-    order_number Int
-    chapter_id Int
-    chapter Chapter @relation(fields: [chapter_id], references: [id])
-    verseLanguage VerseLanguage[]
+  id            Int             @id @default(autoincrement())
+  order_number  Int
+  chapter_id    Int
+  chapter       Chapter         @relation(fields: [chapter_id], references: [id])
+  verseLanguage VerseLanguage[]
 }
 
 model Language {
-    code String @id
-    name String
-    full_name String
-    verseLanguage VerseLanguage[]
+  code          String          @id
+  name          String
+  full_name     String
+  verseLanguage VerseLanguage[]
 }
 
 model VerseLanguage {
-    verse_id Int
-    language_code String
-    content String
-    verse Verse @relation(fields: [verse_id], references: [id])
-    language Language @relation(fields: [language_code],references: [code])
-    @@id([verse_id, language_code])
+  verse_id      Int
+  language_code String
+  content       String
+  verse         Verse    @relation(fields: [verse_id], references: [id])
+  language      Language @relation(fields: [language_code], references: [code])
+
+  @@id([verse_id, language_code])
 }
