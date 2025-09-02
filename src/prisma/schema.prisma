@@ -33,7 +33,6 @@ model Verse {
 model Language {
   code          String          @id
   name          String
-  full_name     String
   verseLanguage VerseLanguage[]
 }
 
