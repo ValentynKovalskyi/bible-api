@@ -19,6 +19,12 @@ router.get("/books/:id", async (req, res) => {
     res.send({ book: book });
 });
 
+router.get("/verses/random", async (req, res) => {
+    const lang = req.query.lang?.toString() || "en";
+    const verse = await VerseRepository.getRandomVerse(lang);
+    res.send(verse);
+});
+
 router.get("/:slug/:chapter/:verse", async (req, res) => {
     const verseParams = {
         ...req.params,
@@ -27,4 +33,5 @@ router.get("/:slug/:chapter/:verse", async (req, res) => {
     const verse = await VerseRepository.getVerse(verseParams)
     res.send({ verse: verse?.content });
 })
+
 export default router;
