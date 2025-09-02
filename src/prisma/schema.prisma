@@ -20,6 +20,8 @@ model Chapter {
   book_id      Int
   book         Book    @relation(fields: [book_id], references: [id])
   verses       Verse[]
+
+  @@unique([book_id, order_number])
 }
 
 model Verse {
@@ -28,6 +30,8 @@ model Verse {
   chapter_id    Int
   chapter       Chapter         @relation(fields: [chapter_id], references: [id])
   verseLanguage VerseLanguage[]
+
+  @@unique([chapter_id, order_number])
 }
 
 model Language {
