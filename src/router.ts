@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { BookRepository } from "./repositories/book.repository.ts";
 import { VerseRepository } from "./repositories/verse.repository.ts";
+import { LanguageRepository } from "./repositories/language.repository.ts";
 
 const router = Router();
 
@@ -25,6 +26,10 @@ router.get("/verses/random", async (req, res) => {
     res.send(verse);
 });
 
+router.get("/languages", async (req, res) => {
+    const languages = await LanguageRepository.getAvailableLanguages();
+    res.send({ languages });
+})
 router.get("/:slug/:chapter/:verse", async (req, res) => {
     const verseParams = {
         ...req.params,
