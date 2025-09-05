@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { BookRepository } from "./repositories/book.repository.ts";
-import { VerseRepository } from "./repositories/verse.repository.ts";
-import { LanguageRepository } from "./repositories/language.repository.ts";
+import { BookRepository } from "./repositories/book.repository.js";
+import { VerseRepository } from "./repositories/verse.repository.js";
+import { LanguageRepository } from "./repositories/language.repository.js";
 
 const router = Router();
 

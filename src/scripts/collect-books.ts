@@ -1,8 +1,8 @@
 import "dotenv/config";
 import puppeteer from "puppeteer";
-import { getNormalizedName } from "../utils/getNormalizedName.ts";
-import { getSlug } from "../utils/getSlug.ts";
-import prisma from "../prisma/client.ts";
+import { getNormalizedName } from "../utils/getNormalizedName.js";
+import { getSlug } from "../utils/getSlug.js";
+import prisma from "../prisma/client.js";
 
 const baseUrl = process.env.DATA_URL;
 const browser = await puppeteer.launch();

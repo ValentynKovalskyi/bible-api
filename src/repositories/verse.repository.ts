@@ -1,4 +1,4 @@
-import prisma from "../prisma/client.ts";
+import prisma from "../prisma/client.js";
 
 export class VerseRepository {
     static async getVerse(params: { slug: string, chapter: string, verse: string, lang: string }) {

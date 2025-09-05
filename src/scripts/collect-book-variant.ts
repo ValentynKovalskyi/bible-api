@@ -1,7 +1,7 @@
 import "dotenv/config";
 import puppeteer, { connect } from "puppeteer";
 
-import prisma from "../prisma/client.ts";
+import prisma from "../prisma/client.js";
 
 const browser = await puppeteer.launch();
 const page = await browser.newPage();
